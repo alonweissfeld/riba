@@ -1,10 +1,12 @@
-//const Midi = Tone.Midi;
-const Synth = Tone.Synth;
 
-var synth = new Synth.toMaster();
+const Midi = Tone.Midi;
+const Synth = Tone.Synth;
+var synth = new Synth().toMaster();
+var notes = getMajorPentatonic(c4);
 
 function playC () {
     console.log("Pressed.")
     // Play middle 'C'
-    synth.triggerAttackRelease("C4", "8n");
+
+    synth.triggerAttackRelease(notes[3], "8n");
 }
