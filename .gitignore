@@ -1,0 +1,10 @@
+# All node modules
+node_modules
+
+# 3rd party scripts
+public/scripts/lib/*
+
+# Optional npm cache directory
+.npm
+
+.DS_Store
