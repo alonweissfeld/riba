@@ -3,12 +3,91 @@
     <head>
         <meta charset="utf-8">
         <title>Home</title>
+        <!-- <script data-main="scripts/main.js" src="scripts/require.js"></script> -->
         <script src="/scripts/lib/Tone.js"></script>
-        <script src="/scripts/scales.js"></script>
-        <script src="/scripts/main.js"></script>
+        <style>
+        .button {
+          border: none;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          border-radius: 120%;
+        }
+        .button1 {background-color: #173F5F;}
+        .button2 {background-color: #20639B;}
+        .button3 {background-color: #3CAEA3;}
+        .button4 {background-color: #F6D55C;}
+        .button5 {background-color: #ED553B;}
+        aside {
+    position:  absolute;
+    left: 0;
+    top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
+    width: 200px;
+    background: rgba(255,255,255,0.66);
+    border: 2px  solid rgba(0,0,0,0.5);
+    border-radius: 4px; padding: 8px;
+}
+        </style>
     </head>
     <body>
         <p>Heya.</p>
-        <button type="button" name="button" onclick="playC()">Play</button>
+        <!-- <aside draggable="true" id="dragme"> This is an aside, drag me. </aside> -->
+        <button draggable="true" id="dragme" class="button button1" type="button" name="button" onclick="playFirst()">Play</button1>
+        <button draggable="true" id="dragme" class="button button2" type="button" name="button" onclick="playSecond()">Play</button2>
+        <button draggable="true" id="dragme" class="button button3" type="button" name="button" onclick="playThird()">Play</button3>
+        <button draggable="true" id="dragme" class="button button4" type="button" name="button" onclick="playFourth()">Play</button4>
+        <button draggable="true" id="dragme" class="button button5" type="button" name="button" onclick="playFifth()">Play</button5>
     </body>
+    <!-- <script src="/scripts/lib/Dnd.js"></script> -->
+    <script >
+        //console.log(document.getElementById('dragme'))
+        var MusicalScale  = ["C4","D4","E4","F4","G4","A4","B4" ]
+        var synth = new Tone.Synth().toMaster();
+        var synthA = new Tone.Synth({
+  oscillator: {
+    type: 'fmsquare',
+    modulationType: 'sawtooth',
+    modulationIndex: 3,
+    harmonicity: 3.4
+  },
+  envelope: {
+    attack: 0.001,
+    decay: 0.1,
+    sustain: 0.1,
+    release: 0.1
+  }
+}).toMaster();
+
+        function playFirst () {
+            console.log("Pressed C.")
+            // Play middle 'C'
+            synth.triggerAttackRelease(MusicalScale[0], "8n");
+        }
+        function playSecond () {
+            console.log("Pressed D.")
+            // Play middle 'C'
+            synth.triggerAttackRelease(MusicalScale[1], "8n");
+        }
+         function playThird() {
+                    console.log("Pressed E.")
+                    // Play middle 'C'
+                    synth.triggerAttackRelease(MusicalScale[2], "8n");
+                }
+         function playFourth () {
+                     console.log("Pressed F.")
+                    // Play middle 'C'
+                    synth.triggerAttackRelease(MusicalScale[3], "8n");
+                        }
+        function playFifth () {
+                  console.log("Pressed F.")
+                   // Play middle 'C'
+                   synth.triggerAttackRelease(MusicalScale[4], "8n");
+               }
+
+
+    </script>
 </html>
