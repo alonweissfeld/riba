@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Riba</title>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+
+    <script>
+      // Set a global scale variable. Append a '4' to determine
+      // it's a middle note.
+      var SCALE_NOTE = '<%= scale %>' + '4';
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+    <script src="/scripts/lib/Tone.js"></script>
+    <script src="/scripts/lib/drag.js"></script>
+
+    <script src="/scripts/notes.js"></script>
+    <script src="/scripts/scales.js"></script>
+    <script src="/scripts/main.js"></script>
+  </head>
+
+  <body>
+    <div class="topnav" >
+      <a class="active" href="#home">Scale</a>
+      <a href="#news">Instrument</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </div>
+
+    <p>Heya. Scale is: <%= scale %></p>
+
+    <div id="dragleft" class="draggable">
+      <button draggable="true" id="dragme" class="button button1"
+        type="button" name="button" onclick="playNote(0)">Play</button>
+    </div>
+
+    <div id="dragright" class="draggable">
+      <button draggable="true" id="dragme" class="button button2" t
+        ype="button" name="button" onclick="playNote(1)">Play</button>
+    </div>
+
+    <div id="dragleft" class="draggable">
+      <button draggable="true" id="dragme" class="button button3"
+        type="button" name="button" onclick="playNote(2)">Play</button>
+    </div>
+
+    <div id="dragright" class="draggable">
+      <button draggable="true" id="dragme" class="button button4"
+        type="button" name="button" onclick="playNote(3)">Play</button>
+    </div>
+
+    <div id="dragleft" class="draggable">
+      <button draggable="true" id="dragme" class="button button5"
+        type="button" name="button" onclick="playNote(4)">Play</button>
+    </div>
+
+    <div id="dragright" class="draggable">
+      <button draggable="true" id="dragme" class="button button6"
+        type="button" name="button" onclick="playNote(5)">Play</button>
+    </div>
+  </body>
+</html>
