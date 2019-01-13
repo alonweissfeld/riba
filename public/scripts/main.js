@@ -1,7 +1,7 @@
 const Synth = Tone.Synth;
 
 var synth = new Synth().toMaster();
-var notes = getMinorPentatonic(c4);
+var notes = getMinorPentatonic(SCALE_NOTE);
 
 function playNote (index) {
     var note = notes[index % 7];
