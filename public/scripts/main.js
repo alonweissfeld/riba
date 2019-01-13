@@ -1,11 +1,14 @@
-
 const Synth = Tone.Synth;
+
 var synth = new Synth().toMaster();
+var notes = getMinorPentatonic(c4);
 
 function playNote (index) {
-    console.log("Pressed at: " + index);
-    console.log("Got scale? " + scale);
-    var notes = getMinorPentatonic(scale);
+    var note = notes[index % 7];
 
-    synth.triggerAttackRelease(notes[index], "8n");
+    if (index >= 7) {
+        note *= 2;
+    }
+
+    synth.triggerAttackRelease(note, "8n");
 }
