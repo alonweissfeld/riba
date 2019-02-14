@@ -1,22 +1,5 @@
-const Synth = Tone.Synth;
 const AMOUNT = 6;
 const AMPLITUDE = 70;
-
-var synth = new Synth().toMaster();
-
-var notes = IS_MINOR
-    ? getMinorPentatonic(SCALE_NOTE)
-    : getMajorPentatonic(SCALE_NOTE);
-
-function playNote (index) {
-    var note = notes[index % 7];
-
-    if (index >= 7) {
-        note *= 2;
-    }
-
-    synth.triggerAttackRelease(note, "8n");
-}
 
 var xCenter
 var yCenter;
@@ -34,7 +17,8 @@ function setup() {
     for (var i = 0; i < AMOUNT; i++) {
         let x = margin * (i + 1);
         let y = yCenter;
-        bubbles.push(new Bubble(x, y, AMPLITUDE));
+
+        bubbles.push(new Bubble(x, y, AMPLITUDE, i));
     }
 }
 
