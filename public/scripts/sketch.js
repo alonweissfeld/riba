@@ -24,7 +24,13 @@ function setup() {
 
 function mousePressed() {
     for (var i = 0; i < bubbles.length; i++) {
-        bubbles[i].clicked();
+        bubbles[i].pressed();
+    }
+}
+
+function mouseReleased() {
+    for (var i = 0; i < bubbles.length; i++) {
+        bubbles[i].released();
     }
 }
 

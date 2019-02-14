@@ -19,14 +19,24 @@ function Bubble(x, y, d, p) {
         ellipse(this.x, this.y, this.diam);
     }
 
-    this.clicked = function() {
+    this.pressed = function() {
         let d = dist(mouseX, mouseY, this.x, this.y);
         if (d < this.diam) {
-            // Brighten ellipse and trigger note with every click.
-            this.c += 10;
-            this.col = color(this.c, 100);
-            triggerAttackRelease(this.degree)
+            triggerAttack(this.degree);
         }
+    }
+
+    this.released = function () {
+        let d = dist(mouseX, mouseY, this.x, this.y);
+        if (d < this.diam) {
+            this.brighten();
+            triggerRelease(this.degree);
+        }
+    }
+
+    this.brighten = function () {
+        this.c += 10;
+        this.col = color(this.c, 100);
     }
 
     this.move = function() {
