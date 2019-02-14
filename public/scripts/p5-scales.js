@@ -56,7 +56,7 @@ function setup() {
     dieseSelect.position(xCenter + 20, yCenter + 30);
 
     let submitBtn = createButton('Continue');
-    submitBtn.position(xCenter - (0.028 * screen.width), yCenter + 200)
+    submitBtn.position(xCenter - (0.028 * screen.width), yCenter + 240)
     submitBtn.mousePressed(function () {
         form.submit();
     })
