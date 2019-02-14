@@ -41,7 +41,7 @@
       <a href="#about">About</a>
     </div>
 
-    <p>Heya. Scale is: <%= scale %></p>
+    <p>Heya. Scale is: <%= scale %><% if (isMinor) { %> min<% } %></p>
 
     <div id="dragleft" class="draggable">
       <button draggable="true" id="dragme" class="button button1"
