@@ -1,7 +1,10 @@
 const Synth = Tone.Synth;
 
 var synth = new Synth().toMaster();
-var notes = getMinorPentatonic(SCALE_NOTE);
+
+var notes = IS_MINOR
+    ? getMinorPentatonic(SCALE_NOTE)
+    : getMajorPentatonic(SCALE_NOTE);
 
 function playNote (index) {
     var note = notes[index % 7];

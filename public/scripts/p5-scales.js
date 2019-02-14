@@ -44,6 +44,30 @@ function setup() {
             }
         });
     }
+
+    let isMinorCheckbox = createCheckbox(" Make it minor");
+    isMinorCheckbox.position(xCenter - 63, yCenter - 20);
+
+    createSpan("Dièse").position(xCenter - 40, yCenter + 30);
+    let dieseSelect = createSelect("Choose diese");
+    dieseSelect.option("0");
+    dieseSelect.option("1")
+    dieseSelect.option("-1");
+    dieseSelect.position(xCenter + 20, yCenter + 30);
+
+    let submitBtn = createButton('Continue');
+    submitBtn.position(xCenter - (0.028 * screen.width), yCenter + 200)
+    submitBtn.mousePressed(function () {
+        form.submit();
+    })
+
+    dieseSelect.changed(function () {
+        form['diese'].value = dieseSelect.value();
+    })
+
+    isMinorCheckbox.changed(function () {
+        form['isMinor'].checked = this.checked();
+    })
 }
 
 // function draw() {

@@ -7,9 +7,22 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 
     <script>
-      // Set a global scale variable. Append a '4' to determine
-      // it's a middle note.
-      var SCALE_NOTE = '<%= scale %>' + '4';
+      // Set a global scale variable.
+      let scale = '<%= scale %>';
+      let diese = '<%= diese %>';
+
+      if (diese == '1') {
+        scale += '#';
+      }
+
+      if (diese == '-1') {
+        scale += 'b';
+      }
+
+      // Set a global scale variable in middle range freq.
+      const SCALE_NOTE = scale + '4';
+      const IS_MINOR = '<%= isMinor %>';
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
     <script src="/scripts/lib/Tone.js"></script>

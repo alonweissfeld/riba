@@ -36,7 +36,7 @@ function convertToFreq(scale) {
  * Genereate a minor pentatoc scale for a given MIDI note.
  * Returns an array of frequencies representing that scale.
  */
-function getMinorPentatonic(note) {
+function getMajorPentatonic(note) {
     note = validateMidiNote(note);
 
     var scale = [
@@ -56,7 +56,7 @@ function getMinorPentatonic(note) {
  * Genereate a Major Pentatoc/Blues scale for a given MIDI note.
  * Returns an array of frequencies representing that scale.
  */
-function getMajorPentatonic(note) {
+function getMinorPentatonic(note) {
     note = validateMidiNote(note);
 
     var scale = [

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Riba</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="/scripts/lib/p5.js"></script>
+    <script src="/scripts/lib/p5.dom.js"></script>
+    <script src="/scripts/p5-scales.js"></script>
+  </head>
+  <body>
+    <h2 class="riba-color">Riba.</h2>
+    <h3>Choose a scale</h3>
+    <form action="/play" method="get" id="scale-form">
+      <input type="text" name="scale" value="C" hidden>
+      <input type="checkbox" name="isMinor" hidden>
+      <select name="diese" hidden>
+        <option value="-1"></option>
+        <option value="0" selected></option>
+        <option value="1"></option>
+      </select>
+      <input type="submit" value="Continue">
+    </form>
+    <div id="sketch-holder"></div>
+  </body>
+</html>
