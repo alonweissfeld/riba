@@ -11,9 +11,14 @@ app.get('/', function(req, res) {
 })
 
 app.get('/play', function(req, res) {
+    let scale = req.query.scale;
+    let diese = req.query.diese;
+
+    if (diese == 1) scale += '#'
+    else if (diese == -1) scale += 'b'
+
     res.render('pages/play', {
-        scale: req.query.scale,
-        diese: req.query.diese,
+        scale: scale,
         isMinor: req.query.isMinor
     });
 })
