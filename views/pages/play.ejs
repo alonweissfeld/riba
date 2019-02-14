@@ -24,53 +24,19 @@
       const IS_MINOR = '<%= isMinor %>';
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
     <script src="/scripts/lib/Tone.js"></script>
-    <script src="/scripts/lib/drag.js"></script>
+
+    <script src="/scripts/lib/p5.js"></script>
+    <script src="/scripts/lib/p5.dom.js"></script>
 
     <script src="/scripts/notes.js"></script>
     <script src="/scripts/scales.js"></script>
+    <script src="/scripts/bubble.js"></script>
     <script src="/scripts/main.js"></script>
   </head>
 
   <body>
-    <div class="topnav" >
-      <a class="active" href="#home">Scale</a>
-      <a href="#news">Instrument</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
-    </div>
 
-    <p>Heya. Scale is: <%= scale %><% if (isMinor) { %> min<% } %></p>
-
-    <div id="dragleft" class="draggable">
-      <button draggable="true" id="dragme" class="button button1"
-        type="button" name="button" onclick="playNote(0)">Play</button>
-    </div>
-
-    <div id="dragright" class="draggable">
-      <button draggable="true" id="dragme" class="button button2" t
-        ype="button" name="button" onclick="playNote(1)">Play</button>
-    </div>
-
-    <div id="dragleft" class="draggable">
-      <button draggable="true" id="dragme" class="button button3"
-        type="button" name="button" onclick="playNote(2)">Play</button>
-    </div>
-
-    <div id="dragright" class="draggable">
-      <button draggable="true" id="dragme" class="button button4"
-        type="button" name="button" onclick="playNote(3)">Play</button>
-    </div>
-
-    <div id="dragleft" class="draggable">
-      <button draggable="true" id="dragme" class="button button5"
-        type="button" name="button" onclick="playNote(4)">Play</button>
-    </div>
-
-    <div id="dragright" class="draggable">
-      <button draggable="true" id="dragme" class="button button6"
-        type="button" name="button" onclick="playNote(5)">Play</button>
-    </div>
+    <p>Scale is: <%= scale %><% if (isMinor) { %> min<% } %></p>
   </body>
 </html>
