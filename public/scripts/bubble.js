@@ -21,7 +21,7 @@ function Bubble(x, y, d, p) {
 
     this.pressed = function() {
         let d = dist(mouseX, mouseY, this.x, this.y);
-        if (d < this.diam) {
+        if (d < this.diam / 2) {
             triggerAttack(this.degree);
         }
     }

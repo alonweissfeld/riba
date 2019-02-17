@@ -1,5 +1,5 @@
 const Synth = Tone.Synth;
-const EFFECT_TIMER = 2000;
+const EFFECT_TIMER = 4000;
 const ALLOW_WITH_EFFECT = 1;
 
 var context;
