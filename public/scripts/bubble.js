@@ -9,6 +9,8 @@ function Bubble(x, y, d, p) {
     this.diam = d;
     this.degree = p;
 
+    this.isPressed = false;
+
     // Determines the coloring starting point.
     this.c = 40;
     this.col = color(this.c, 100);
@@ -23,6 +25,7 @@ function Bubble(x, y, d, p) {
         let d = dist(mouseX, mouseY, this.x, this.y);
         if (d < this.diam / 2) {
             triggerAttack(this.degree);
+            this.isPressed = true;
         }
     }
 
@@ -31,6 +34,7 @@ function Bubble(x, y, d, p) {
         if (d < this.diam) {
             this.brighten();
             triggerRelease(this.degree);
+            this.isPressed = false;
         }
     }
 

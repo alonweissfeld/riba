@@ -23,7 +23,13 @@ function setup() {
 
         bubbles.push(new Bubble(x, y, AMPLITUDE, i));
     }
+
+    canvas.mouseMoved(mouseMoved);
 }
+
+/**
+ * Events
+ */
 
 function mousePressed() {
     for (var i = 0; i < bubbles.length; i++) {
@@ -34,6 +40,15 @@ function mousePressed() {
 function mouseReleased() {
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].released();
+    }
+}
+
+function mouseMoved() {
+    for (var i = 0; i < bubbles.length; i++) {
+        if (bubbles[i].isPressed) {
+            bubbles[i].x = mouseX;
+            bubbles[i].y = mouseY;
+        }
     }
 }
 
