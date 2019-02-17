@@ -1,13 +1,16 @@
 const AMOUNT = 6;
 const AMPLITUDE = 70;
 
+// Dynamic background color.
+var backgroundColor = 0;
+
 var xCenter
 var yCenter;
 var bubbles = [];
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
-    background(0);
+    setBackground(backgroundColor)
 
     xCenter = windowWidth / 2;
     yCenter = windowHeight / 2;
@@ -35,9 +38,13 @@ function mouseReleased() {
 }
 
 function draw() {
-    background(0);
+    background(backgroundColor)
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].move();
         bubbles[i].display();
     }
+}
+
+function setBackground(col) {
+    backgroundColor = col;
 }
