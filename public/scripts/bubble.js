@@ -9,6 +9,9 @@ function Bubble(x, y, d, p) {
     this.diam = d;
     this.degree = p;
 
+    // Dtermines the distance from mouse location.
+    this.distX = 0;
+    this.distY = 0;
     this.isPressed = false;
 
     // Determines the coloring starting point.

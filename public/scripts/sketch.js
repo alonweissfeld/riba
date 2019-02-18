@@ -34,6 +34,8 @@ function setup() {
 function mousePressed() {
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].pressed();
+        bubbles[i].distX = mouseX - bubbles[i].x;
+        bubbles[i].distY = mouseY - bubbles[i].y;
     }
 }
 
@@ -46,8 +48,8 @@ function mouseReleased() {
 function mouseMoved() {
     for (var i = 0; i < bubbles.length; i++) {
         if (bubbles[i].isPressed) {
-            bubbles[i].x = mouseX;
-            bubbles[i].y = mouseY;
+            bubbles[i].x = mouseX - bubbles[i].distX ;
+            bubbles[i].y = mouseY - bubbles[i].distY;
         }
     }
 }
