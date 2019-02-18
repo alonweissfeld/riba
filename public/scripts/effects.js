@@ -23,7 +23,6 @@ function runEffect () {
     let len = Object.keys(effects).length - 2;
     let idx = Math.floor(Math.random() * len);
     let effect = effects[idx];
-    console.log("effect: " + effect);
 
     // Set dry/wat value and ramp to the given value
     // over 1 seconds.
@@ -32,8 +31,8 @@ function runEffect () {
 
     // Clean up current synth and chain the new effect.
     effects.on = true;
-    synth.disconnect();
-    synth.chain(effect, Tone.Master);
+    polySynth.disconnect();
+    polySynth.chain(effect, Tone.Master);
 
     // Effect "is ready" color
     setBackground(color(100, 100 ,400));

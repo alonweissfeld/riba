@@ -1,5 +1,8 @@
 const Synth = Tone.Synth;
-const EFFECT_TIMER = 4000;
+const PolySynth = Tone.PolySynth;
+
+const MAX_VOICES = 5;
+const EFFECT_TIMER = 8000;
 const ALLOW_WITH_EFFECT = 1;
 
 var context;
@@ -8,7 +11,8 @@ window.onload = function() {
 }
 
 // Main synth to be played.
-var synth = new Synth().toMaster();
+// var synth = new Synth().toMaster();
+var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
 
 // Chain an effect every fixed time.
 var playedWithEffect = 0;
@@ -34,16 +38,16 @@ function triggerAttack(idx) {
     if (effects.clean) {
         console.log("cleaning.");
         // Clean effect from current node
-        synth.disconnect();
-        synth.toMaster();
+        polySynth.disconnect();
+        polySynth.toMaster();
         effects.clean = false;
     }
 
-    synth.triggerAttack(getNote(idx));
+    polySynth.triggerAttack(getNote(idx));
 }
 
 function triggerRelease(idx) {
-    synth.triggerRelease();
+    polySynth.triggerRelease(notes);
 
     // Allow only fixed number of notes with effect
     if (effects.on) playedWithEffect++;
