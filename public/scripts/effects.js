@@ -1,8 +1,7 @@
 const effects = {
     0: new Tone.Chorus(),
-    1: new Tone.Tremolo(),
     2: new Tone.PingPongDelay(),
-    3: new Tone.Chebyshev(50),
+    3: new Tone.Chebyshev(20),
     4: new Tone.Distortion(),
     5: new Tone.Reverb(),
     6: new Tone.JCReverb(),
@@ -16,7 +15,13 @@ effects.on = false;
  * random effects before going to master output.
  */
 function runEffect () {
-    if (effects.on) {
+    // Do not trigger a new effect is a note is already pressed,
+    // or if a previous effect has been initialized.
+    let notePressed = bubbles.some((note) => {
+        return note.isPressed;
+    })
+
+    if (effects.on || notePressed) {
         return;
     }
 

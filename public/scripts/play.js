@@ -36,7 +36,6 @@ function triggerAttack(idx) {
     context.resume();
 
     if (effects.clean) {
-        console.log("cleaning.");
         // Clean effect from current node
         polySynth.disconnect();
         polySynth.toMaster();
@@ -46,7 +45,7 @@ function triggerAttack(idx) {
     polySynth.triggerAttack(getNote(idx));
 }
 
-function triggerRelease(idx) {
+function triggerRelease() {
     polySynth.triggerRelease(notes);
 
     // Allow only fixed number of notes with effect
