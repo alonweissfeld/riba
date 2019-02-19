@@ -1,5 +1,4 @@
 const AMOUNT = 6;
-const AMPLITUDE = 70;
 
 // Dynamic background color.
 var backgroundColor = 0;
@@ -21,7 +20,7 @@ function setup() {
         let x = margin * (i + 1);
         let y = yCenter;
 
-        bubbles.push(new Bubble(x, y, AMPLITUDE, i));
+        bubbles.push(new Bubble(x, y, i));
     }
 
     canvas.mouseMoved(mouseMoved);

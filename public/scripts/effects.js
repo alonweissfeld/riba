@@ -1,11 +1,11 @@
 const effects = {
     0: new Tone.Chorus(),
-    2: new Tone.PingPongDelay(),
-    3: new Tone.Chebyshev(20),
-    4: new Tone.Distortion(),
-    5: new Tone.Reverb(),
-    6: new Tone.JCReverb(),
-    7: new Tone.Phaser()
+    1: new Tone.PingPongDelay(),
+    2: new Tone.Chebyshev(20),
+    3: new Tone.Distortion(),
+    4: new Tone.Reverb(),
+    5: new Tone.JCReverb(),
+    6: new Tone.Phaser()
 }
 
 effects.on = false;
@@ -26,7 +26,7 @@ function runEffect () {
     }
 
     let len = Object.keys(effects).length - 2;
-    let idx = Math.floor(Math.random() * len);
+    let idx = getRandomInt(0, len)
     let effect = effects[idx];
 
     // Set dry/wat value and ramp to the given value
