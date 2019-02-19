@@ -1,18 +1,27 @@
+// Defaults
+const VELOCITY = 0.5;
+const DIAMETER = 70;
+
 /**
  * A Bubble object. This ellipse shape bubble represents a note and
  * determined by it's (x,y) postiion and by it's diameter representing
  * the amplitutde of the note (Bigger circles = more amp).
  */
-function Bubble(x, y, d, p) {
+function Bubble(x, y, p) {
     this.x = x;
     this.y = y;
-    this.diam = d;
     this.degree = p;
 
     // Dtermines the distance from mouse location.
     this.distX = 0;
     this.distY = 0;
     this.isPressed = false;
+
+    // Determines the velocity of the note (range: [0,1]).
+    // The diameter is the size of the bubble as used in
+    // drawning an p5 ellipse. 
+    this.vel = VELOCITY;
+    this.diam = DIAMETER;
 
     // Determines the coloring starting point.
     this.c = 40;
@@ -27,7 +36,7 @@ function Bubble(x, y, d, p) {
     this.pressed = function() {
         let d = dist(mouseX, mouseY, this.x, this.y);
         if (d < this.diam / 2) {
-            triggerAttack(this.degree);
+            triggerAttack(this.degree, this.vel);
             this.isPressed = true;
         }
     }
@@ -42,7 +51,7 @@ function Bubble(x, y, d, p) {
     }
 
     this.brighten = function () {
-        this.c += 10;
+        this.c += 8;
         this.col = color(this.c, 100);
     }
 

@@ -2,21 +2,14 @@ const Synth = Tone.Synth;
 const PolySynth = Tone.PolySynth;
 
 const MAX_VOICES = 5;
-const EFFECT_TIMER = 8000;
-const ALLOW_WITH_EFFECT = 1;
 
 var context;
 window.onload = function() {
     context = new AudioContext();
 }
 
-// Main synth to be played.
-// var synth = new Synth().toMaster();
+// Main Synth to be played.
 var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
-
-// Chain an effect every fixed time.
-var playedWithEffect = 0;
-var effectsInterval = setInterval(runEffect, EFFECT_TIMER);
 
 // Determine starting notes.
 var notes = IS_MINOR
@@ -29,7 +22,12 @@ function getNote(idx) {
     return note;
 }
 
-function triggerAttack(idx) {
+/**
+ * Trigger's the synth attack.
+ * deg - the note's degree to be played.
+ * vel - the velocity of the note.
+ */
+function triggerAttack(deg, vel) {
     // According to Google's Web Audio recomendation, wait for a
     // user interaction before starting audio playback as user
     // is aware of something happening.
@@ -42,11 +40,15 @@ function triggerAttack(idx) {
         effects.clean = false;
     }
 
-    polySynth.triggerAttack(getNote(idx));
+    polySynth.triggerAttack(getNote(deg), undefined, vel);
 }
 
-function triggerRelease() {
-    polySynth.triggerRelease(notes);
+/**
+ * Release the given notes
+ */
+function triggerRelease(deg) {
+    let r = [getNote(deg)];
+    polySynth.triggerRelease(r);
 
     // Allow only fixed number of notes with effect
     if (effects.on) playedWithEffect++;
