@@ -1,4 +1,5 @@
-const AMOUNT = 6;
+// Amount of bubbles starting point.
+const AMOUNT = 5;
 
 // Dynamic background color.
 var backgroundColor = 0;
@@ -6,6 +7,7 @@ var backgroundColor = 0;
 var xCenter
 var yCenter;
 var bubbles = [];
+var lastBubbleDeg;
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
@@ -14,14 +16,22 @@ function setup() {
     xCenter = windowWidth / 2;
     yCenter = windowHeight / 2;
 
-    let margin = 0.8 * (screen.width / AMOUNT);
+    let i;
+    let dif = screen.width / (AMOUNT + 1)
 
-    for (var i = 0; i < AMOUNT; i++) {
-        let x = margin * (i + 1);
+    for (i = 0; i < AMOUNT; i++) {
+        let x = dif * (i + 1);
         let y = yCenter;
-
         bubbles.push(new Bubble(x, y, i));
     }
+
+    lastBubbleDeg = i;
+
+    // Add more notes bubble
+    let addBtn = createButton('+');
+    addBtn.class('round-btn');
+    addBtn.position(xCenter, 0.07 * screen.width);
+    addBtn.mouseClicked(addNote);
 
     canvas.mouseMoved(mouseMoved);
 }
@@ -59,6 +69,13 @@ function draw() {
         bubbles[i].move();
         bubbles[i].display();
     }
+}
+
+/**
+ * Adds another note to scale, represented by a Bubble object.
+ */
+function addNote() {
+    bubbles.push(new Bubble(xCenter, yCenter, lastBubbleDeg++));
 }
 
 function setBackground(col) {
