@@ -1,5 +1,5 @@
 // Amount of bubbles starting point.
-const AMOUNT = 6;
+const AMOUNT = 5;
 
 // Dynamic background color.
 var backgroundColor = 0;
@@ -16,15 +16,15 @@ function setup() {
     xCenter = windowWidth / 2;
     yCenter = windowHeight / 2;
 
-    let margin = 0.8 * (screen.width / AMOUNT);
-
     let i;
-    for (i = 0; i < AMOUNT; i++) {
-        let x = margin * (i + 1);
-        let y = yCenter;
+    let dif = screen.width / (AMOUNT + 1)
 
+    for (i = 0; i < AMOUNT; i++) {
+        let x = dif * (i + 1);
+        let y = yCenter;
         bubbles.push(new Bubble(x, y, i));
     }
+
     lastBubbleDeg = i;
 
     // Add more notes bubble
