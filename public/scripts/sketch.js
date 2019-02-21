@@ -28,8 +28,9 @@ function setup() {
     lastBubbleDeg = i;
 
     // Add more notes bubble
-    let addBtn = createButton('Add');
-    addBtn.position(xCenter, 0.1 * screen.width);
+    let addBtn = createButton('+');
+    addBtn.class('round-btn');
+    addBtn.position(xCenter, 0.07 * screen.width);
     addBtn.mouseClicked(addNote);
 
     canvas.mouseMoved(mouseMoved);
