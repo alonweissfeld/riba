@@ -19,7 +19,7 @@ function Bubble(x, y, p) {
 
     // Determines the velocity of the note (range: [0,1]).
     // The diameter is the size of the bubble as used in
-    // drawning an p5 ellipse. 
+    // drawning an p5 ellipse.
     this.vel = VELOCITY;
     this.diam = DIAMETER;
 
