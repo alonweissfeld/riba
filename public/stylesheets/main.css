@@ -4,11 +4,8 @@
   text-align: center;
 }
 
-html, body {
-  overflow-x: hidden;
-}
-
 body {
+  overscroll-behavior: none;
   position: relative;
 }
 

@@ -40,7 +40,8 @@ function setup() {
  * Events
  */
 
-function mousePressed() {
+function mousePressed(ev) {
+    ev.preventDefault();
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].pressed();
         bubbles[i].distX = mouseX - bubbles[i].x;
@@ -70,6 +71,10 @@ function draw() {
         bubbles[i].display();
     }
 }
+
+window.addEventListener('touchmove', function(ev) {
+    ev.preventDefault();
+}, { passive: false });
 
 /**
  * Adds another note to scale, represented by a Bubble object.
