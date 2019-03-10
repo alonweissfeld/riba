@@ -4,11 +4,6 @@
   text-align: center;
 }
 
-html, body {
-  overflow-x: hidden;
-  -webkit-text-size-adjust: none;
-}
-
 body {
   position: relative;
 }
