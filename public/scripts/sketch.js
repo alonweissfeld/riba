@@ -41,7 +41,7 @@ function setup() {
  */
 
 function mousePressed(ev) {
-    // ev.preventDefault();
+    ev.preventDefault();
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].pressed();
         bubbles[i].distX = mouseX - bubbles[i].x;
