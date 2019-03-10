@@ -72,9 +72,9 @@ function draw() {
     }
 }
 
-window.addEventListener('touchmove', function(ev) {
-    ev.preventDefault();
-}, { passive: false });
+// window.addEventListener('touchmove', function(ev) {
+//     ev.preventDefault();
+// }, { passive: false });
 
 /**
  * Adds another note to scale, represented by a Bubble object.
