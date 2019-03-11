@@ -4,7 +4,8 @@ const AMOUNT = 5;
 // Dynamic starts color global setting.
 var starsSettings = {
     color: 255,
-    alpha: 20
+    alpha: 20,
+    size: 8,
 }
 
 var video;
@@ -94,7 +95,7 @@ function draw() {
     pg.rect(0, 0, windowWidth, windowHeight);
 
     pg.fill(starsSettings.color);
-    pg.ellipse(random(width), random(height), 8);
+    pg.ellipse(random(width), random(height), starsSettings.size);
     image(pg, 0, 0);
 
     // Draw bubbles (notes)
@@ -111,7 +112,21 @@ function addNote() {
     bubbles.push(new Bubble(xCenter, yCenter, lastBubbleDeg++));
 }
 
+/**
+ * When we change the background stars color, something is happening.
+ * E.g., an effect is turned on and we want to indicate it. Therefore,
+ * The following makes a few modifications to the stars properties.
+ */
 function setStarsColor(col) {
-    starsSettings.alpha = col != 255 ? 8 : 20;
     starsSettings.color = col;
+
+    if (col != 255) {
+        starsSettings.size = 14;
+        starsSettings.alpha = 8;
+        return;
+    }
+
+    // Default settings.
+    starsSettings.size = 8;
+    starsSettings.alpha = 20;
 }
