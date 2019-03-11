@@ -4,13 +4,20 @@ const AMOUNT = 5;
 // Dynamic background color.
 var backgroundColor = 0;
 
+var video;
 var xCenter
 var yCenter;
 var bubbles = [];
 var lastBubbleDeg;
 
+function preload() {
+    video = createVideo('/assets/space.mp4');
+    video.hide();
+    video.loop();
+}
+
 function setup() {
-    canvas = createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight, WEBGL);
     setBackground(backgroundColor)
 
     xCenter = windowWidth / 2;
@@ -66,6 +73,10 @@ function mouseMoved() {
 
 function draw() {
     background(backgroundColor)
+    // pass video frame as texture
+    texture(video);
+    plane(windowWidth, windowHeight);
+
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].move();
         bubbles[i].display();
