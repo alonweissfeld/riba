@@ -24,8 +24,7 @@ function Bubble(x, y, p) {
     this.diam = DIAMETER;
 
     // Determines the coloring starting point.
-    this.c = 40;
-    this.col = color(this.c, 100);
+    this.col = randomColor();
 
     this.display = function() {
         stroke(255);
@@ -51,12 +50,18 @@ function Bubble(x, y, p) {
     }
 
     this.brighten = function () {
-        this.c += 8;
-        this.col = color(this.c, 100);
+        this.col.setAlpha(alpha(this.col) + 1);
     }
 
     this.move = function() {
         this.x = this.x + random(-0.5, 0.5);
         this.y = this.y + random(-0.5, 0.5);
     }
+}
+
+/**
+ * Generates a radnom RGB color.
+ */
+function randomColor() {
+    return color(random(0,255), random(0,255), random(0,255), 70);
 }

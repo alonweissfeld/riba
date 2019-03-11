@@ -1,17 +1,36 @@
 // Amount of bubbles starting point.
 const AMOUNT = 5;
 
-// Dynamic background color.
-var backgroundColor = 0;
+// Dynamic starts color global setting.
+var starsSettings = {
+    color: 255,
+    alpha: 20,
+    size: 8,
+}
 
+var video;
 var xCenter
 var yCenter;
 var bubbles = [];
 var lastBubbleDeg;
 
+/**
+ * Preload a video and start playback.
+ */
+// function preload() {
+//     video = createVideo('/assets/space-lines.mp4');
+//     video.hide();
+//     video.loop();
+// }
+
 function setup() {
+    // Main canvas used to draw our shaped musical notes.
     canvas = createCanvas(windowWidth, windowHeight);
-    setBackground(backgroundColor)
+
+    // Create a p5.Renderer object to suppport off-screen graphics buffer.
+    // For example, visual background effects.
+    pg = createGraphics(windowWidth, windowHeight);
+    pg.noStroke();
 
     xCenter = windowWidth / 2;
     yCenter = windowHeight / 2;
@@ -65,7 +84,21 @@ function mouseMoved() {
 }
 
 function draw() {
-    background(backgroundColor)
+    background(0)
+
+    // pass video frame as texture
+    // pg.texture(video);
+    // pg.plane(windowWidth, windowHeight);
+
+    // Create a "night stars" effect in background.
+    pg.fill(0, starsSettings.alpha);
+    pg.rect(0, 0, windowWidth, windowHeight);
+
+    pg.fill(starsSettings.color);
+    pg.ellipse(random(width), random(height), starsSettings.size);
+    image(pg, 0, 0);
+
+    // Draw bubbles (notes)
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].move();
         bubbles[i].display();
@@ -79,6 +112,21 @@ function addNote() {
     bubbles.push(new Bubble(xCenter, yCenter, lastBubbleDeg++));
 }
 
-function setBackground(col) {
-    backgroundColor = col;
+/**
+ * When we change the background stars color, something is happening.
+ * E.g., an effect is turned on and we want to indicate it. Therefore,
+ * The following makes a few modifications to the stars properties.
+ */
+function setStarsColor(col) {
+    starsSettings.color = col;
+
+    if (col != 255) {
+        starsSettings.size = 14;
+        starsSettings.alpha = 8;
+        return;
+    }
+
+    // Default settings.
+    starsSettings.size = 8;
+    starsSettings.alpha = 20;
 }

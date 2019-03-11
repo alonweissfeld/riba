@@ -54,7 +54,8 @@ function triggerRelease(deg) {
     if (effects.on) playedWithEffect++;
 
     if (playedWithEffect == ALLOW_WITH_EFFECT) {
-        setBackground(0);
+        // Done with current effect.
+        setStarsColor(255);
 
         playedWithEffect = 0;
         effects.on = false;
