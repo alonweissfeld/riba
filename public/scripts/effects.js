@@ -40,5 +40,5 @@ function runEffect () {
     polySynth.chain(effect, Tone.Master);
 
     // Effect "is ready" color
-    setBackground(color(100, 100 ,400));
+    setStarsColor(color(100, 100 ,400));
 }

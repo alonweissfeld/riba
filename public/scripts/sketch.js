@@ -1,8 +1,11 @@
 // Amount of bubbles starting point.
 const AMOUNT = 5;
 
-// Dynamic background color.
-var backgroundColor = 0;
+// Dynamic starts color global setting.
+var starsSettings = {
+    color: 255,
+    alpha: 20
+}
 
 var video;
 var xCenter
@@ -10,15 +13,23 @@ var yCenter;
 var bubbles = [];
 var lastBubbleDeg;
 
-function preload() {
-    video = createVideo('/assets/space.mp4');
-    video.hide();
-    video.loop();
-}
+/**
+ * Preload a video and start playback.
+ */
+// function preload() {
+//     video = createVideo('/assets/space-lines.mp4');
+//     video.hide();
+//     video.loop();
+// }
 
 function setup() {
-    canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-    setBackground(backgroundColor)
+    // Main canvas used to draw our shaped musical notes.
+    canvas = createCanvas(windowWidth, windowHeight);
+
+    // Create a p5.Renderer object to suppport off-screen graphics buffer.
+    // For example, visual background effects.
+    pg = createGraphics(windowWidth, windowHeight);
+    pg.noStroke();
 
     xCenter = windowWidth / 2;
     yCenter = windowHeight / 2;
@@ -72,11 +83,21 @@ function mouseMoved() {
 }
 
 function draw() {
-    background(backgroundColor)
-    // pass video frame as texture
-    texture(video);
-    plane(windowWidth, windowHeight);
+    background(0)
 
+    // pass video frame as texture
+    // pg.texture(video);
+    // pg.plane(windowWidth, windowHeight);
+
+    // Create a "night stars" effect in background.
+    pg.fill(0, starsSettings.alpha);
+    pg.rect(0, 0, windowWidth, windowHeight);
+
+    pg.fill(starsSettings.color);
+    pg.ellipse(random(width), random(height), 8);
+    image(pg, 0, 0);
+
+    // Draw bubbles (notes)
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].move();
         bubbles[i].display();
@@ -90,6 +111,7 @@ function addNote() {
     bubbles.push(new Bubble(xCenter, yCenter, lastBubbleDeg++));
 }
 
-function setBackground(col) {
-    backgroundColor = col;
+function setStarsColor(col) {
+    starsSettings.alpha = col != 255 ? 8 : 20;
+    starsSettings.color = col;
 }
