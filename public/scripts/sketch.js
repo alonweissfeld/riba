@@ -52,35 +52,43 @@ function setup() {
     addBtn.position(xCenter, 0.07 * screen.width);
     addBtn.mouseClicked(addNote);
 
-    canvas.mouseMoved(mouseMoved);
+    // canvas.mouseMoved(mouseMoved);
 }
 
 /**
  * Events
+ * We return false at the end of touchStarted, touchMoved and touchEnded
+ * events to prevent any default browser behaviors.
  */
 
-function mousePressed(ev) {
+function touchStarted(ev) {
     ev.preventDefault();
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].pressed();
         bubbles[i].distX = mouseX - bubbles[i].x;
         bubbles[i].distY = mouseY - bubbles[i].y;
     }
+
+    return false;
 }
 
-function mouseReleased() {
+function touchEnded() {
     for (var i = 0; i < bubbles.length; i++) {
         bubbles[i].released();
     }
+
+    return false;
 }
 
-function mouseMoved() {
+function touchMoved() {
     for (var i = 0; i < bubbles.length; i++) {
         if (bubbles[i].isPressed) {
             bubbles[i].x = mouseX - bubbles[i].distX ;
             bubbles[i].y = mouseY - bubbles[i].distY;
         }
     }
+
+    return false;
 }
 
 function draw() {
