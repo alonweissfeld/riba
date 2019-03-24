@@ -25,14 +25,14 @@ var lastBubbleDeg;
 
 function setup() {
     // Main canvas used to draw our shaped musical notes.
-    canvas = createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(screen.width, windowHeight);
 
     // Create a p5.Renderer object to suppport off-screen graphics buffer.
     // For example, visual background effects.
-    pg = createGraphics(windowWidth, windowHeight);
+    pg = createGraphics(screen.width, windowHeight);
     pg.noStroke();
 
-    xCenter = windowWidth / 2;
+    xCenter = screen.width / 2;
     yCenter = windowHeight / 2;
 
     let i;
@@ -96,11 +96,11 @@ function draw() {
 
     // pass video frame as texture
     // pg.texture(video);
-    // pg.plane(windowWidth, windowHeight);
+    // pg.plane(screen.width, windowHeight);
 
     // Create a "night stars" effect in background.
     pg.fill(0, starsSettings.alpha);
-    pg.rect(0, 0, windowWidth, windowHeight);
+    pg.rect(0, 0, screen.width, windowHeight);
 
     pg.fill(starsSettings.color);
     pg.ellipse(random(width), random(height), starsSettings.size);
