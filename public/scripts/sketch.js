@@ -52,7 +52,7 @@ function setup() {
     // Add more notes bubble
     let addBtn = createButton('+');
     addBtn.class('round-btn');
-    addBtn.position(xCenter, 0.07 * width);
+    addBtn.position(xCenter, 0.09 * height);
     addBtn.mouseClicked(addNote);
 }
 
