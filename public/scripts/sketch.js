@@ -24,19 +24,22 @@ var lastBubbleDeg;
 // }
 
 function setup() {
+    let width = window.windowWidth;
+    let height = window.windowHeight;
+
     // Main canvas used to draw our shaped musical notes.
-    canvas = createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(width, height);
 
     // Create a p5.Renderer object to suppport off-screen graphics buffer.
     // For example, visual background effects.
-    pg = createGraphics(windowWidth, windowHeight);
+    pg = createGraphics(width, height);
     pg.noStroke();
 
-    xCenter = windowWidth / 2;
-    yCenter = windowHeight / 2;
+    xCenter = width / 2;
+    yCenter = height / 2;
 
     let i;
-    let dif = screen.width / (AMOUNT + 1)
+    let dif = width / (AMOUNT + 1)
 
     for (i = 0; i < AMOUNT; i++) {
         let x = dif * (i + 1);
@@ -49,10 +52,8 @@ function setup() {
     // Add more notes bubble
     let addBtn = createButton('+');
     addBtn.class('round-btn');
-    addBtn.position(xCenter, 0.07 * screen.width);
+    addBtn.position(xCenter, 0.09 * height);
     addBtn.mouseClicked(addNote);
-
-    // canvas.mouseMoved(mouseMoved);
 }
 
 /**
@@ -96,11 +97,11 @@ function draw() {
 
     // pass video frame as texture
     // pg.texture(video);
-    // pg.plane(windowWidth, windowHeight);
+    // pg.plane(window.width, window.windowHeight);
 
     // Create a "night stars" effect in background.
     pg.fill(0, starsSettings.alpha);
-    pg.rect(0, 0, windowWidth, windowHeight);
+    pg.rect(0, 0, window.width, window.windowHeight);
 
     pg.fill(starsSettings.color);
     pg.ellipse(random(width), random(height), starsSettings.size);
