@@ -1,6 +1,6 @@
 const Synth = Tone.Synth;
 const PolySynth = Tone.PolySynth;
-
+instrumentChanged = false;
 const MAX_VOICES = 5;
 
 var context;
@@ -9,32 +9,25 @@ window.onload = function() {
 }
 
 // Main Synth to be played.
-/* var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
-polySynth.set({
-	"oscillator" : {
-		"type" : "pwm",
-		"modulationFrequency" : 0.2
-	},
-	"envelope" : {
-		"attack" : 0.02,
-		"decay" : 0.1,
-		"sustain" : 0.2,
-		"release" : 0.9,
-	}
-});*/
-var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
-polySynth.set({
-    oscillator: {
-      type: 'triangle8'
-    },
-    envelope: {
-      attack: 2,
-      decay: 1,
-      sustain: 0.4,
-      release: 4
+//var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
+var polySynth = new Tone.PolySynth(8, Tone.Synth).toMaster();
+
+polySynth.set(
+    {
+        "oscillator": {
+            "type": "fatcustom",
+              "partials" : [0.2, 1, 0, 0.5, 0.1],
+              "spread" : 40,
+              "count" : 3
+        },
+        "envelope": {
+            "attack": 0.001,
+            "decay": 1.6,
+            "sustain": 0,
+            "release": 1.6
+        }
     }
-  })
-  
+)
 // Determine starting notes.
 var notes = IS_MINOR
     ? getMinorPentatonic(SCALE_NOTE)
@@ -85,4 +78,38 @@ function triggerRelease(deg) {
         effects.on = false;
         effects.clean = true;
     }
+}
+
+function changeInstrument(instrument) {
+    console.log("CHANGED!")
+    if (instrument){polySynth.set({
+        oscillator: {
+          type: 'triangle8'
+        },
+        envelope: {
+          attack: 2,
+          decay: 1,
+          sustain: 0.4,
+          release: 4
+        }
+      })
+    instrumentChanged = false;
+    }
+      else{
+        polySynth.set({
+            "oscillator": {
+              "type": "fatcustom",
+            "partials" : [0.2, 1, 0, 0.5, 0.1],
+            "spread" : 40,
+            "count" : 3
+            },
+            "envelope": {
+                "attack": 0.001,
+                "decay": 1.6,
+                "sustain": 0,
+                "release": 1.6
+            }
+        })
+        instrumentChanged = true;
+      }
 }
