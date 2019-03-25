@@ -1,6 +1,6 @@
 const Synth = Tone.Synth;
 const PolySynth = Tone.PolySynth;
-instrumentChanged = false;
+instrumentChanged = true;
 const MAX_VOICES = 5;
 
 var context;
