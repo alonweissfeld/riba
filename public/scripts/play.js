@@ -9,8 +9,32 @@ window.onload = function() {
 }
 
 // Main Synth to be played.
+/* var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
+polySynth.set({
+	"oscillator" : {
+		"type" : "pwm",
+		"modulationFrequency" : 0.2
+	},
+	"envelope" : {
+		"attack" : 0.02,
+		"decay" : 0.1,
+		"sustain" : 0.2,
+		"release" : 0.9,
+	}
+});*/
 var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
-
+polySynth.set({
+    oscillator: {
+      type: 'triangle8'
+    },
+    envelope: {
+      attack: 2,
+      decay: 1,
+      sustain: 0.4,
+      release: 4
+    }
+  })
+  
 // Determine starting notes.
 var notes = IS_MINOR
     ? getMinorPentatonic(SCALE_NOTE)
