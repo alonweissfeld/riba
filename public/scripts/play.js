@@ -1,7 +1,6 @@
 const Synth = Tone.Synth;
 const PolySynth = Tone.PolySynth;
-
-const MAX_VOICES = 5;
+const MAX_VOICES = 8;
 
 var context;
 window.onload = function() {
@@ -10,6 +9,10 @@ window.onload = function() {
 
 // Main Synth to be played.
 var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
+
+// Determins the starting instrument
+var currentInst = 0
+polySynth.set(instruments[currentInst])
 
 // Determine starting notes.
 var notes = IS_MINOR
@@ -61,4 +64,13 @@ function triggerRelease(deg) {
         effects.on = false;
         effects.clean = true;
     }
+}
+
+/**
+ * Change instrument by setting different OSC and ENV parameters,
+ * configured by the global instruments array.
+ */
+function changeInstrument() {
+    currentInst = (currentInst + 1) % instruments.length
+    polySynth.set(instruments[currentInst])
 }

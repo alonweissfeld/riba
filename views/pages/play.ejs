@@ -18,7 +18,6 @@
 
     </script>
     <script src="/scripts/lib/Tone.js"></script>
-
     <script src="/scripts/lib/p5.js"></script>
     <script src="/scripts/lib/p5.dom.js"></script>
 
@@ -29,6 +28,7 @@
     <script src="/scripts/effects.js"></script>
     <script src="/scripts/amplitude.js"></script>
     <script src="/scripts/intervals.js"></script>
+    <script src="/scripts/instruments.js"></script>
     <script src="/scripts/play.js"></script>
 
   </head>
@@ -36,5 +36,8 @@
   <body>
 
     <p>Scale is: <%= scale %><% if (isMinor) { %> min<% } %></p>
+    <button onclick="changeInstrument()">change sound</button>
+    <input action="action" onclick="window.history.go(-1); return false;" type="button" value="start over" />
+
   </body>
 </html>
