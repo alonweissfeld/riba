@@ -1,7 +1,6 @@
 const Synth = Tone.Synth;
 const PolySynth = Tone.PolySynth;
-instrumentChanged = true;
-const MAX_VOICES = 5;
+const MAX_VOICES = 8;
 
 var context;
 window.onload = function() {
@@ -9,25 +8,12 @@ window.onload = function() {
 }
 
 // Main Synth to be played.
-//var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
-var polySynth = new Tone.PolySynth(8, Tone.Synth).toMaster();
+var polySynth = new PolySynth(MAX_VOICES, Synth).toMaster();
 
-polySynth.set(
-    {
-        "oscillator": {
-            "type": "fatcustom",
-              "partials" : [0.2, 1, 0, 0.5, 0.1],
-              "spread" : 40,
-              "count" : 3
-        },
-        "envelope": {
-            "attack": 0.001,
-            "decay": 1.6,
-            "sustain": 0,
-            "release": 1.6
-        }
-    }
-)
+// Determins the starting instrument
+var currentInst = 0
+polySynth.set(instruments[currentInst])
+
 // Determine starting notes.
 var notes = IS_MINOR
     ? getMinorPentatonic(SCALE_NOTE)
@@ -80,36 +66,11 @@ function triggerRelease(deg) {
     }
 }
 
-function changeInstrument(instrument) {
-    console.log("CHANGED!")
-    if (instrument){polySynth.set({
-        oscillator: {
-          type: 'triangle8'
-        },
-        envelope: {
-          attack: 2,
-          decay: 1,
-          sustain: 0.4,
-          release: 4
-        }
-      })
-    instrumentChanged = false;
-    }
-      else{
-        polySynth.set({
-            "oscillator": {
-              "type": "fatcustom",
-            "partials" : [0.2, 1, 0, 0.5, 0.1],
-            "spread" : 40,
-            "count" : 3
-            },
-            "envelope": {
-                "attack": 0.001,
-                "decay": 1.6,
-                "sustain": 0,
-                "release": 1.6
-            }
-        })
-        instrumentChanged = true;
-      }
+/**
+ * Change instrument by setting different OSC and ENV parameters,
+ * configured by the global instruments array.
+ */
+function changeInstrument() {
+    currentInst = (currentInst + 1) % instruments.length
+    polySynth.set(instruments[currentInst])
 }
